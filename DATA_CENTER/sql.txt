@@ -1,0 +1,18 @@
+create tables sensor_data(
+   id varchar(20) primary key not null,
+   year int,
+   month int,
+   days int,
+   hour int,
+   minute int
+);
+
+
+create table sensor(
+   id varvhar(20) primaty key not null,
+   sensor_type varchar(20),
+   net_type varchar(20)
+);
+
+
+create
