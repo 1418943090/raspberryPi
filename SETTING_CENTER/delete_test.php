@@ -9,7 +9,7 @@
   else
   {
     mysqli_query($con,"set name 'utf-8'");
-    mysqli_select_db($con,"SETTING");
+    mysqli_select_db($con,"lot");
     mysqli_query($con,"delete from set_name where name='$name'");
     mysqli_query($con,"delete from timing where name='$name'");
     echo 'true';

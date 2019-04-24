@@ -61,7 +61,7 @@ function setting_equ_check($con,$name)
    $result1=mysqli_query($con,"select equ from smart where name='$name'");
    $array1=mysqli_fetch_array($result1,MYSQLI_NUM);
    $smart_equ_array=explode(',',$array1[0]);
-   mysqli_select_db($con,"SETTING");
+   mysqli_select_db($con,"lot");
    $result2=mysqli_query($con,"select equ_name,name from timing");
    $bool=0;
 

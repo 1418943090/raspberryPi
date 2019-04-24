@@ -9,7 +9,7 @@ error_reporting(0);
   else
   {
       mysqli_query($con,"set name 'utf-8'");
-       mysqli_select_db($con,"SETTING");
+       mysqli_select_db($con,"lot");
        $result=mysqli_query($con,"select * from timing where name='$name'");
        while($row = mysqli_fetch_array($result,MYSQLI_NUM))
        {

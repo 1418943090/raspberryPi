@@ -42,7 +42,7 @@ def s_time_check(date,row):
     s_m=int(row[3])
     if date[3]==s_h and date[4]==s_m:
       if row[4]=="" and row[6]==1:#如果没有输入关闭时间 又是 当天模式 则到达开启时间后关闭该定时任务
-        cur.execute("use SETTING")
+        cur.execute("use lot")
         cur.execute("update set_name set status='off' where name=\"%s\""%row[8])
         connecting.commit()          
       return 'ontrue'
@@ -69,7 +69,7 @@ def e_time_check(date,row):
     e_m=int(row[5])
     if date[3]==e_h and date[4]==e_m:
       if row[6]==1:#到了关闭时间 当天有效模式 则把定时任务关闭
-        cur.execute("use SETTING")
+        cur.execute("use lot")
         cur.execute("update set_name set status='off' where name=\"%s\""%row[8])
         connecting.commit()
       return 'offtrue'
@@ -89,9 +89,9 @@ def f_everyday(row,date):#每天生效模式
           
            cur.execute("use lot")
            cur.execute("update node_information set status='on' where name=\"%s\" "%i)#更新设备状态
-           cur.execute("select ID from node_information where name=\"%s\""%i)
-           ID=cur.fetchall()
-           code=ID[0][0]+":"+"on"                               #则打开设备
+           cur.execute("select id from node_information where name=\"%s\""%i)
+           id=cur.fetchall()
+           code=id[0][0]+":"+"on"                               #则打开设备
            print(code)
            fp.writelines("%s\n"%code)#将指令写入文档中
            fp.flush()
@@ -99,9 +99,9 @@ def f_everyday(row,date):#每天生效模式
        if status_check(i)=='on' and e_time_check(date,row)=='offtrue':#设备是开的 且停止时间到了
            cur.execute("use lot")
            cur.execute("update node_information set status='off' where name=\"%s\" "%i)
-           cur.execute("select ID from node_information where name=\"%s\""%i)
-           ID=cur.fetchall()
-           code=ID[0][0]+":"+"off"                               #则打开设备
+           cur.execute("select id from node_information where name=\"%s\""%i)
+           id=cur.fetchall()
+           code=id[0][0]+":"+"off"                               #则打开设备
            print(code)
            fp.writelines("%s\n"%code)#将指令写入文档中
            fp.flush()
@@ -125,12 +125,12 @@ def gettime():
 #**********************************************************
 while 1:
   cur=mysql_con()
-  cur.execute("use SETTING");
+  cur.execute("use lot");
   cur.execute("select * from timing")
   data=cur.fetchall()
   for row in data:
       date=gettime()
-      cur.execute("use SETTING");
+      cur.execute("use lot");
       cur.execute("select * from set_name where name=\"%s\""%row[8])
       status=cur.fetchall()
       if (status[0][1]=='on'):

@@ -8,7 +8,7 @@ $name=$_POST['name'];
    else
    {
      mysqli_query($con,"set name 'utf-8'");
-     mysqli_select_db($con,"SETTING");
+     mysqli_select_db($con,"lot");
      mysqli_query($con,"select * from set_name where name='$name'");
      $i=mysqli_affected_rows($con);
      if($i==0)

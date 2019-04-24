@@ -60,7 +60,7 @@ error_reporting(0);
      
      $bool=0;
      $A=array();
-     mysqli_select_db($con,"SETTING");
+     mysqli_select_db($con,"lot");
       $result1=mysqli_query($con,"select equ_name,name from timing");
          while($row1=mysqli_fetch_array($result1,MYSQLI_NUM))
        {

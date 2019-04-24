@@ -61,7 +61,25 @@ create table current_scene(
 
 ###################定时中心#############################################
 
+create table set_name(
 
+  name varchar(20) primary key not null,
+  status varchar(5)
+);
+
+create table timing(
+
+     id         int  primary key auto_increment,
+     equ_name   varchar(500),
+     shour      varchar(5),
+     smimute    varchar(5),
+     ehour      varchar(5),
+     eminute    varchar(5),
+     type       int,
+     days       varchar(20),
+     name       varchar(50)
+
+);
 
 
 

@@ -62,7 +62,7 @@ function mode_equname_change($con,$name,$newname)
 }
 function timing_equname_change($con,$name,$newname)
 {
-   mysqli_select_db($con,"SETTING");
+   mysqli_select_db($con,"lot");
    $result=mysqli_query($con,"select * from timing");
    while($row=mysqli_fetch_array($result,MYSQLI_NUM))
    {
@@ -594,7 +594,7 @@ $con=mysqli_connect("localhost","rot","huang110");
         {
            mysqli_query($con,"delete from $row[0] where node_name='$name'");
         }
-        mysqli_select_db($con,"SETTING");
+        mysqli_select_db($con,"lot");
         $result=mysqli_query($con,"select * from timing");
         while($row=mysqli_fetch_array($result,MYSQLI_NUM))
         {
@@ -2500,7 +2500,7 @@ function second()
   else
   {
     mysqli_query($con,"set name 'utf-8'");
-    mysqli_select_db($con,"SETTING");
+    mysqli_select_db($con,"lot");
     mysqli_query($con,"delete from set_name where name='$name'");
     mysqli_query($con,"delete from timing where name='$name'");
     echo 'true';
@@ -2519,7 +2519,7 @@ error_reporting(0);
       else
       {
          mysqli_query($con,"set name 'utf8'");
-        mysqli_select_db($con,"SETTING");
+        mysqli_select_db($con,"lot");
         $result=mysqli_query($con," select * from set_name ");
         while($row = mysqli_fetch_array($result,MYSQLI_NUM))
          {
@@ -2543,7 +2543,7 @@ error_reporting(0);
   else
   {
       mysqli_query($con,"set name 'utf-8'");
-       mysqli_select_db($con,"SETTING");
+       mysqli_select_db($con,"lot");
        $result=mysqli_query($con,"select * from timing where name='$name'");
        while($row = mysqli_fetch_array($result,MYSQLI_NUM))
        {
@@ -2593,7 +2593,7 @@ $con=mysqli_connect("localhost","rot","huang110");
       }
       else
       {
-          mysqli_select_db($con,"SETTING");
+          mysqli_select_db($con,"lot");
           mysqli_query($con,"select * from set_name where name='$name'");
           $q=mysqli_affected_rows($con);
           if($type=='define')
@@ -2662,7 +2662,7 @@ $name=$_POST['name'];
    else
    {
      mysqli_query($con,"set name 'utf-8'");
-     mysqli_select_db($con,"SETTING");
+     mysqli_select_db($con,"lot");
      mysqli_query($con,"select * from set_name where name='$name'");
      $i=mysqli_affected_rows($con);
      if($i==0)
@@ -3152,7 +3152,7 @@ function mysql_error()
       }
       else
       {
-        mysqli_select_db($con,"SETTING");
+        mysqli_select_db($con,"lot");
         $result=mysqli_query($con," select * from set_name ");
         while($row = mysqli_fetch_array($result,MYSQLI_NUM))
         {
@@ -3215,7 +3215,7 @@ def s_time_check(date,row):
     
     if date[3]==s_h and date[4]==s_m:
       if row[4]=="" and row[6]==1:#如果没有输入关闭时间 又是 当天模式 则到达开启时间后关闭该定时任务
-        cur.execute("use SETTING")
+        cur.execute("use lot")
         cur.execute("update set_name set status='off' where name=\"%s\""%row[8])
         connecting.commit()          
       return 'ontrue'
@@ -3231,7 +3231,7 @@ def e_time_check(date,row):
     e_m=int(row[5])
     if date[3]==e_h and date[4]==e_m:
       if row[6]==1:#到了关闭时间 当天有效模式 则把定时任务关闭
-        cur.execute("use SETTING")
+        cur.execute("use lot")
         cur.execute("update set_name set status='off' where name=\"%s\""%row[8])
         connecting.commit()
       return 'offtrue'
@@ -3282,12 +3282,12 @@ def gettime():
 #**********************************************************
 while 1:
   cur=mysql_con()
-  cur.execute("use SETTING");
+  cur.execute("use lot");
   cur.execute("select * from timing")
   data=cur.fetchall()
   for row in data:
       date=gettime()
-      cur.execute("use SETTING");
+      cur.execute("use lot");
       cur.execute("select * from set_name where name=\"%s\""%row[8])
       status=cur.fetchall()
 
@@ -3379,7 +3379,7 @@ connecting.close()
    else
    {
      mysqli_query($con,"set name 'utf-8'");
-     mysqli_select_db($con,"SETTING");
+     mysqli_select_db($con,"lot");
      $result=mysqli_query($con,"select * from timing");
   while(1)
   {
@@ -3415,7 +3415,7 @@ error_reporting(0);
   else
   {
     mysqli_query($con,"set name 'utf-8'");
-    mysqli_select_db($con,"SETTING"); 
+    mysqli_select_db($con,"lot");
     mysqli_query($con,"update set_name set status='$status' where name='$name'");
     mysqli_close($con);
   }

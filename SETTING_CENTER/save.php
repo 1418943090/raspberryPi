@@ -20,7 +20,7 @@ function equ_check($equname1,$equname)
 function clash_check($name,$type,$s_hour,$s_minute,$e_hour,$e_minute,$week,$equ_name,$con)
 {
     $A=array();
-    mysqli_select_db($con,"SETTING");
+    mysqli_select_db($con,"lot");
  
     $result2=mysqli_query($con,"select * from set_name");
     while($sta=mysqli_fetch_array($result2,MYSQLI_NUM))
@@ -216,7 +216,7 @@ function clash_check($name,$type,$s_hour,$s_minute,$e_hour,$e_minute,$week,$equ_
 //***************************************************
 function mysql($name,$type,$date,$s_hour,$s_minute,$e_hour,$e_minute,$equ_name,$con)
 {
-          mysqli_select_db($con,"SETTING");
+          mysqli_select_db($con,"lot");
           mysqli_query($con,"select * from set_name where name='$name'");
           $q=mysqli_affected_rows($con);
           $string=implode(',',$equ_name);
@@ -251,7 +251,7 @@ function mysql($name,$type,$date,$s_hour,$s_minute,$e_hour,$e_minute,$equ_name,$
 }
 function status_check($con,$name)
 {
-   mysqli_select_db($con,"SETTING");
+   mysqli_select_db($con,"lot");
    $result=mysqli_query($con,"select * from set_name where name='$name'");
    $row=mysqli_fetch_array($result,MYSQLI_NUM);
    if($row[1]=='off')

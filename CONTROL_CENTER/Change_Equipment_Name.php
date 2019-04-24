@@ -39,7 +39,7 @@ function mode_equname_change($con,$name,$newname)
 }
 function timing_equname_change($con,$name,$newname)
 {
-   mysqli_select_db($con,"SETTING");
+   mysqli_select_db($con,"lot");
    $result=mysqli_query($con,"select * from timing");
    while($row=mysqli_fetch_array($result,MYSQLI_NUM))
    {

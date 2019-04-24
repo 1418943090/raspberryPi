@@ -12,7 +12,7 @@
   function clash_check($name,$type,$s_hour,$s_minute,$e_hour,$e_minute,$week,$equ_name,$con)
 {
     $A=array();
-    mysqli_select_db($con,"SETTING");
+    mysqli_select_db($con,"lot");
     $result2=mysqli_query($con,"select * from set_name");
     while($sta=mysqli_fetch_array($result2,MYSQLI_NUM))
     {
@@ -209,7 +209,7 @@
 function equ_isnull_check($con,$name)
 {
   
-  mysqli_select_db($con,"SETTING");
+  mysqli_select_db($con,"lot");
   $result=mysqli_query($con,"select equ_name from timing where name='$name'");
   $row=mysqli_fetch_array($result,MYSQLI_NUM);
 
@@ -224,7 +224,7 @@ function smart_equ_check($con,$name)
    
   
    $A=array();
-   mysqli_select_db($con,"SETTING");
+   mysqli_select_db($con,"lot");
    $result=mysqli_query($con,"select equ_name from timing where name='$name'");
    $row=mysqli_fetch_array($result,MYSQLI_NUM);
    $array=explode(',',$row[0]);
@@ -291,7 +291,7 @@ function smart_equ_check($con,$name)
   //else{
         if(equ_isnull_check($con,$sce_name))
        {
-          mysqli_select_db($con,"SETTING");
+          mysqli_select_db($con,"lot");
          $result=mysqli_query($con,"select * from timing where name='$sce_name'");
          $row=mysqli_fetch_array($result,MYSQLI_NUM);
          $type=$row[6];
@@ -308,7 +308,7 @@ function smart_equ_check($con,$name)
         
          if(smart_equ_check($con,$sce_name))
           {
-             mysqli_select_db($con,"SETTING");
+             mysqli_select_db($con,"lot");
             mysqli_query($con,"update set_name set status='$status' where name='$sce_name'");
            mysqli_close($con);
           echo 'success';
@@ -326,7 +326,7 @@ function smart_equ_check($con,$name)
    else
    {  
       mysqli_query($con,"set name 'utf-8'");
-      mysqli_select_db($con,"SETTING");
+      mysqli_select_db($con,"lot");
       mysqli_query($con,"update set_name set status='$status' where name='$sce_name'");
       mysqli_close($con);
       echo "success";

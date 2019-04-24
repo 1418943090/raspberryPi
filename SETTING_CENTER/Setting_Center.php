@@ -682,7 +682,7 @@ function mysql_error()
       }
       else
       {
-        mysqli_select_db($con,"SETTING");
+        mysqli_select_db($con,"lot");
         $result=mysqli_query($con," select * from set_name ");
         while($row = mysqli_fetch_array($result,MYSQLI_NUM))
         {
