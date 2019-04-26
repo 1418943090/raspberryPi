@@ -43,7 +43,7 @@ function timing_equname_change($con,$name,$newname)
    $result=mysqli_query($con,"select * from timing");
    while($row=mysqli_fetch_array($result,MYSQLI_NUM))
    {
-     $array=explode(',',$row[0]);
+     $array=explode(',',$row['equ_name']);
      foreach ($array as $key => $value) {
        if($value==$name)
        {

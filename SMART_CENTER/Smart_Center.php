@@ -525,7 +525,7 @@ function mysql_error()
                  $result=mysqli_query($con,"select * from node_information");
                  while($row=mysqli_fetch_array($result,MYSQLI_NUM))
                  {
-                 	$id=$row[0].'2';
+                 	$id=$row[0].'_id';
                     echo "<input type='checkbox' name=$row[0] id=$id value=$row[0] class='equipment2' />";
                     echo "<label for=$id>$row[0]</label>";
                  }
@@ -547,7 +547,7 @@ function mysql_error()
    else
    {
        mysqli_query($con,"set name 'utf8'");
-       mysqli_select_db($con,"DATA");
+       mysqli_select_db($con,"lot");
        $result=mysqli_query($con,"select * from now_data");
        while($row=mysqli_fetch_array($result,MYSQLI_NUM))
        {
@@ -622,7 +622,7 @@ function mysql_error()
    else
    {
        mysqli_query($con,"set name 'utf8'");
-       mysqli_select_db($con,"DATA");
+       mysqli_select_db($con,"lot");
        $result=mysqli_query($con,"select * from now_data");
        while($row=mysqli_fetch_array($result,MYSQLI_NUM))
        {

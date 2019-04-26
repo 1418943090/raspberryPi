@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+error_reporting(1);
 $type=$_POST['type'];
 $s_hour=$_POST['s_hour'];
 $s_minute=$_POST['s_minute'];
@@ -261,8 +261,10 @@ function sql($name,$type,$date,$s_hour,$s_minute,$e_hour,$e_minute,$equ_name,$co
           {
             $week=$_POST['week'];
             $days=implode(',',$week);   
-            if(!$q)  
-            mysqli_query($con,"insert into timing(equ_name,shour,sminute,ehour,eminute,type,days,name) values('$string','$s_hour','$s_minute','$e_hour','$e_minute','2','$days','$name')");
+            if(!$q)  {
+
+                mysqli_query($con,"insert into timing(equ_name,shour,sminute,ehour,eminute,type,days,name) values('$string','$s_hour','$s_minute','$e_hour','$e_minute','2','$days','$name')");
+            }
             else{
               mysqli_query($con,"update  timing  set equ_name='$string',shour='$s_hour',sminute='$s_minute',ehour='$e_hour',eminute='$e_minute',type='2',days='$days' where name='$name'");
             }

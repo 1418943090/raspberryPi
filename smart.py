@@ -21,7 +21,7 @@ while 1:
     data=cur.fetchall()
     for row in data:
         if row[6]=='on':
-            cur.execute("use DATA")
+            cur.execute("use lot")
             cur.execute("select * from now_data where name='%s'"%row[1])
             row1=cur.fetchall()
             if((row[2]=="less" and row1[0][2]<=row[3] )or(row[2]=="more" and row1[0][2]>row[3] )):

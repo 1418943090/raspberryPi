@@ -39,7 +39,7 @@
    else
    {
        mysqli_query($con,"set name 'utf8'");
-       mysqli_select_db($con,"DATA");
+       mysqli_select_db($con,"lot");
        $result=mysqli_query($con,"select * from now_data");
        while($row=mysqli_fetch_array($result,MYSQLI_NUM))
        {

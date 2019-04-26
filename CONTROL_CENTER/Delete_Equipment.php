@@ -4,7 +4,7 @@ error_reporting(0);
 function timing_equ_del($con,$name)
 {
    $boo=0;
-   mysqli_select_db($con,"SETTING");
+   mysqli_select_db($con,"lot");
         $result=mysqli_query($con,"select equ_name,name from timing");
         while($row=mysqli_fetch_array($result,MYSQLI_NUM))
         {

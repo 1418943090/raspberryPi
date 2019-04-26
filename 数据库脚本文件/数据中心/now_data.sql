@@ -68,11 +68,10 @@ create table set_name(
 );
 
 create table timing(
-
-     id         int  primary key auto_increment,
      equ_name   varchar(500),
+     date       varchar(5),
      shour      varchar(5),
-     smimute    varchar(5),
+     sminute    varchar(5),
      ehour      varchar(5),
      eminute    varchar(5),
      type       int,
@@ -82,6 +81,17 @@ create table timing(
 );
 
 
+
+#########智能中心#################################################
+create table smart(
+    name    varchar(50) primary key ,
+    sensor  varchar(20),
+    compare varchar(10),
+    value   varchar(10),
+    operate varchar(10),
+    equ     varchar(500),
+    status  varchar(10)
+);
 
 
 

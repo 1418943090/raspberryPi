@@ -429,7 +429,6 @@ function save_change_sure()
        dataType:'text',
        success:function(result)
        {
-         
            if(result=='error')
            {
               $('#save_change_sure').popup('close');
